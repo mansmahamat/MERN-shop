@@ -1,12 +1,10 @@
 const products = [
   {
     _id: '1',
-    name: 'Airpods Wireless Bluetooth Headphones',
-    image: '/images/airpods.jpg',
+    name: 'Lemonada fair',
+    image: '/images/plant1.jpg',
     description:
-      'Bluetooth technology lets you connect it with compatible devices wirelessly High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working',
-    brand: 'Apple',
-    category: 'Electronics',
+      'In ancient times, in Africa, corn plants were a symbol of reason and good fortune',
     price: 89.99,
     countInStock: 10,
     rating: 4.5,
@@ -14,11 +12,10 @@ const products = [
   },
   {
     _id: '2',
-    name: 'iPhone 11 Pro 256GB Memory',
-    image: '/images/phone.jpg',
+    name: 'Fika sweet',
+    image: '/images/plant2.jpeg',
     description:
-      'Introducing the iPhone 11 Pro. A transformative triple-camera system that adds tons of capability without complexity. An unprecedented leap in battery life',
-    brand: 'Apple',
+      'Check her weekly and just give her a drink if the top two inches of soil are dry.',
     category: 'Electronics',
     price: 599.99,
     countInStock: 7,
@@ -27,11 +24,10 @@ const products = [
   },
   {
     _id: '3',
-    name: 'Cannon EOS 80D DSLR Camera',
-    image: '/images/camera.jpg',
+    name: 'Santorinii EOS',
+    image: '/images/plant3.jpeg',
     description:
-      'Characterized by versatile imaging specs, the Canon EOS 80D further clarifies itself using a pair of robust focusing systems and an intuitive design',
-    brand: 'Cannon',
+      'She needs very little water, so let her soil totally dry out between drinks.',
     category: 'Electronics',
     price: 929.99,
     countInStock: 5,
@@ -40,12 +36,10 @@ const products = [
   },
   {
     _id: '4',
-    name: 'Sony Playstation 4 Pro White Version',
-    image: '/images/playstation.jpg',
+    name: 'Saggo cycle',
+    image: '/images/plant4.jpeg',
     description:
-      'The ultimate home entertainment center starts with PlayStation. Whether you are into gaming, HD movies, television, music',
-    brand: 'Sony',
-    category: 'Electronics',
+      'She’s used to living in shade, so she’s perfect for those rooms that get only a little light.',
     price: 399.99,
     countInStock: 11,
     rating: 5,
@@ -53,11 +47,10 @@ const products = [
   },
   {
     _id: '5',
-    name: 'Logitech G-Series Gaming Mouse',
-    image: '/images/mouse.jpg',
+    name: 'Cactus G-Series',
+    image: '/images/plant5.jpeg',
     description:
-      'Get a better handle on your games with this Logitech LIGHTSYNC gaming mouse. The six programmable buttons allow customization for a smooth playing experience',
-    brand: 'Logitech',
+      'It grows in tropical areas all over the world, including Central America, the east side of Africa',
     category: 'Electronics',
     price: 49.99,
     countInStock: 7,
@@ -66,17 +59,36 @@ const products = [
   },
   {
     _id: '6',
-    name: 'Amazon Echo Dot 3rd Generation',
-    image: '/images/alexa.jpg',
-    description:
-      'Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space',
-    brand: 'Amazon',
-    category: 'Electronics',
+    name: 'Echo Alosia',
+    image: '/images/plant6.jpeg',
+    description: ' Give her a drink if her top two inches of soil feel dry.',
     price: 29.99,
     countInStock: 0,
     rating: 4,
     numReviews: 12,
   },
-]
+  {
+    _id: '7',
+    name: 'Palm Tree',
+    image: '/images/plant7.jpeg',
+    description: 'Place her in the brightest spot available.',
+    price: 29.99,
+    countInStock: 0,
+    rating: 4,
+    numReviews: 12,
+  },
+  {
+    _id: '8',
+    name: 'Shingle Plant',
+    image: '/images/plant8.jpeg',
+    description:
+      ' He lives happily in shade, so brilliant for homes with lower light levels.',
 
-export default products
+    price: 29.99,
+    countInStock: 0,
+    rating: 4,
+    numReviews: 12,
+  },
+];
+
+export default products;
