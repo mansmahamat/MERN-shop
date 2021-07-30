@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -6,7 +7,16 @@ import Rating from '../partials/HomeScreen/Rating';
 import products from '../products';
 
 const ProductScreen = ({ match }) => {
-  const product = products.find((p) => p._id === match.params.id);
+  const [product, setProduct] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { data } = await axios.get(`/api/plants/${match.params.id}`);
+      setProduct(data);
+    };
+
+    fetchProducts();
+  }, []);
 
   return (
     <section className="text-gray-600 body-font overflow-hidden">
