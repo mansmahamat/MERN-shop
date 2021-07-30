@@ -4,7 +4,7 @@ const products = [
     name: 'Lemonada fair',
     image: '/images/plant1.jpg',
     description:
-      'As an indoor plant, its needs are simple. It manages in almost any light conditions, needs infrequent watering and generally just gets on with things. It will appreciate a feed with liquid fertiliser once per month in spring and summer. This is an ideal beginner’s plant that gives impressive results with very little work from you. In the wild, they can reach up to 80-metres tall, so there’s a growing challenge for you.',
+      'It grows in tropical areas all over the world, including Central America, the east side of Africa and parts of Australia. As an indoor plant, it’s very slow growing and relatively easy to look after. It likes its soil quite dry and the air humid. You can boost its growing a bit by giving it a feed once in spring and again in summer. It doesn’t like to be fussed about too much, so it’s good for areas where it won’t be brushed against a lot. It’s been around millions of years; it needs a bit of time to itself.',
     price: 89.99,
     category: 'Electronics',
     countInStock: 10,
@@ -28,7 +28,7 @@ const products = [
     name: 'Santorinii EOS',
     image: '/images/plant3.jpeg',
     description:
-      'She needs very little water, so let her soil totally dry out between drinks.',
+      'It’s a native of South-East Asia, where it grows in tropical forests. As a houseplant, it’s quite easygoing. It likes a fairly bright spot and regular watering (it doesn’t like to dry out), but that’s about it. It’s not that fussed about humidity, so a mist every week or so should be enough. Unlike the fiddle leaf fig, it’s not especially sensitive to being moved or changes in temperature.  If it’s ever unhappy it will let you know by dropping leaves. Lots of leaves falling are usually a sign of too little light or improper watering. Adjust those and it should quickly get back on track. ',
     category: 'Electronics',
     price: 929.99,
     countInStock: 5,

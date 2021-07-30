@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import ProductCard from '../partials/HomeScreen/ProductCard';
-import products from '../products';
 
 const HomeScreen = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { data } = await axios.get('/api/plants');
+      setProducts(data);
+    };
+
+    fetchProducts();
+  }, []);
+
   return (
     <section className="bg-white py-8">
       <div className="container mx-auto flex items-center flex-wrap pt-4 pb-12">
@@ -49,7 +60,7 @@ const HomeScreen = () => {
           </div>
         </nav>
 
-        {products.map((product) => (
+        {products?.map((product) => (
           <ProductCard
             _id={product._id}
             key={product._id}

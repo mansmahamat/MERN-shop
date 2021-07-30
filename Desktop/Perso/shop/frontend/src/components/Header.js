@@ -96,7 +96,7 @@ const Header = () => {
         <div className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
         <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
           <div className="flex items-center mb-8">
-            <p className="mr-2">Fight My Friend</p>
+            <p className="mr-2">Plat Shop</p>
             <img className="h-10" src="" alt="" width="auto" />
 
             <button
@@ -122,7 +122,7 @@ const Header = () => {
           <div>
             {avatar}
             <input
-              className="inline-block px-4 py-3 text-sm text-gray-50 placeholder-gray-50 font-semibold bg-yellow-500 border border-transparent rounded-l"
+              className="inline-block px-4 py-3 text-sm text-gray-50 placeholder-gray-50 font-semibold bg-green-600 border border-transparent rounded-l"
               placeholder="Search"
               data-dashlane-rid="1d395ff59b419945"
               data-form-type="other"
