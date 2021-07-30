@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Rating from './Rating';
 
 const ProductCard = ({
   name,
@@ -9,17 +11,23 @@ const ProductCard = ({
   countInStock,
   rating,
   numReviews,
+  _id,
 }) => {
   return (
     <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
       {/* <a href="#"> */}
-      <img
-        alt=""
-        class="hover:grow object-cover object-center h-80 hover:shadow-lg"
-        src={image}
-      />
+      <Link to={`plant/${_id}`}>
+        <img
+          alt=""
+          class="hover:grow object-cover object-center h-80 hover:shadow-lg"
+          src={image}
+        />
+      </Link>
+
       <div class="pt-3 flex items-center justify-between">
-        <p class="">{name}</p>
+        <Link to={`plant/${_id}`} class="underline text-xl">
+          {name}
+        </Link>
         <svg
           class="h-6 w-6 fill-current text-gray-500 hover:text-black"
           xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +37,7 @@ const ProductCard = ({
         </svg>
       </div>
       <p>
-        {rating} from {numReviews} reviews
+        <Rating value={rating} text={`${numReviews} reviews`} />
       </p>
       <p class="pt-1 text-gray-900">{price} €</p>
       {/* </a> */}

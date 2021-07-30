@@ -4,8 +4,9 @@ const products = [
     name: 'Lemonada fair',
     image: '/images/plant1.jpg',
     description:
-      'In ancient times, in Africa, corn plants were a symbol of reason and good fortune',
+      'As an indoor plant, its needs are simple. It manages in almost any light conditions, needs infrequent watering and generally just gets on with things. It will appreciate a feed with liquid fertiliser once per month in spring and summer. This is an ideal beginner’s plant that gives impressive results with very little work from you. In the wild, they can reach up to 80-metres tall, so there’s a growing challenge for you.',
     price: 89.99,
+    category: 'Electronics',
     countInStock: 10,
     rating: 4.5,
     numReviews: 12,
@@ -15,7 +16,7 @@ const products = [
     name: 'Fika sweet',
     image: '/images/plant2.jpeg',
     description:
-      'Check her weekly and just give her a drink if the top two inches of soil are dry.',
+      "This impressive tree has a thick trunk and dramatic leaves. Slow growing and very easy going, it's the perfect addition to any low maintenance jungle. In the wild, this yucca is found in Mexico or Central America, giving it the ‘guatemalensis’ part of its name. When fully grown, it can be as tall as six metres. This yucca is easy to grow as a houseplant, just remember that it’s used to hot, dry conditions. Do everything you can to remind it of its sunny home by giving it as much light as possible and being sparing with water.",
     category: 'Electronics',
     price: 599.99,
     countInStock: 7,
@@ -54,7 +55,7 @@ const products = [
     category: 'Electronics',
     price: 49.99,
     countInStock: 7,
-    rating: 3.5,
+    rating: 1,
     numReviews: 10,
   },
   {

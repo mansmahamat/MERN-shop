@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import MenuItem from '../partials/Header/MenuItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faUserAlt } from '@fortawesome/free-solid-svg-icons';
@@ -17,9 +18,13 @@ const Header = () => {
   // ) : null;
 
   return (
-    <nav className="px-10 py-8 bg-green-400">
+    <nav className="px-10 py-8 bg-green-600">
       <div className="flex justify-between items-center">
-        <p className="mr-2 text-xl">Plant Shop</p>
+        <Link to="/">
+          <img alt="Profile" src="/images/sprout.svg" className="h-12 w-12" />
+          <p className="mr-2 text-xl">Plant Shop</p>
+        </Link>
+
         <img className="h-10" src="" alt="" width="auto" />
 
         <div className="lg:hidden">
