@@ -1,5 +1,11 @@
 const express = require('express');
+const dotenv = require('dotenv');
 const products = require('./data/products');
+const connectDb = require('./config/db');
+
+dotenv.config();
+
+connectDb();
 
 const app = express();
 
@@ -16,4 +22,6 @@ app.get('/api/plants/:id', (req, res) => {
   res.json(product);
 });
 
-app.listen(5000, console.log('tudo bem'));
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, console.log('tudo bem'));

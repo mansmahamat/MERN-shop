@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import MenuItem from '../partials/Header/MenuItem';
+//import MenuItem from '../partials/Header/MenuItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faUserAlt } from '@fortawesome/free-solid-svg-icons';
 
