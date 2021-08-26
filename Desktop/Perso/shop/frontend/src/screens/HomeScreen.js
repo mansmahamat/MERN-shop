@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import ProductCard from '../partials/HomeScreen/ProductCard';
+import { listProducts } from '../actions/productActions';
 
 const HomeScreen = () => {
-  const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+
+  const productList = useSelector((state) => state.productList);
+  const { products, loading, error } = productList;
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const { data } = await axios.get('/api/plants');
-      setProducts(data);
-    };
-
-    fetchProducts();
-  }, []);
+    dispatch(listProducts());
+  }, [dispatch]);
 
   return (
     <section className="bg-white py-8">
@@ -60,18 +59,24 @@ const HomeScreen = () => {
           </div>
         </nav>
 
-        {products?.map((product) => (
-          <ProductCard
-            _id={product._id}
-            key={product._id}
-            name={product.name}
-            image={product.image}
-            price={product.price}
-            description={product.description}
-            rating={product.rating}
-            numReviews={product.numReviews}
-          />
-        ))}
+        {loading ? (
+          <h2>Loading...</h2>
+        ) : error ? (
+          <h2>Error..</h2>
+        ) : (
+          products?.map((product) => (
+            <ProductCard
+              _id={product._id}
+              key={product._id}
+              name={product.name}
+              image={product.image}
+              price={product.price}
+              description={product.description}
+              rating={product.rating}
+              numReviews={product.numReviews}
+            />
+          ))
+        )}
       </div>
     </section>
   );
