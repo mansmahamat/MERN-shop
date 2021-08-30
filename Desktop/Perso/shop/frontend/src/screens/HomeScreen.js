@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductCard from '../partials/HomeScreen/ProductCard';
+import Loader from '../components/Loader';
 import { listProducts } from '../actions/productActions';
 
 const HomeScreen = () => {
@@ -60,7 +61,7 @@ const HomeScreen = () => {
         </nav>
 
         {loading ? (
-          <h2>Loading...</h2>
+          <Loader />
         ) : error ? (
           <h2>Error..</h2>
         ) : (
