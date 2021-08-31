@@ -7,7 +7,7 @@ import Rating from '../partials/HomeScreen/Rating';
 import { listProductDetails } from '../actions/productActions';
 import Loader from '../components/Loader';
 
-const ProductScreen = ({ match }) => {
+const ProductScreen = ({ history, match }) => {
   const [qty, setQty] = useState(0);
 
   const dispatch = useDispatch();
@@ -19,7 +19,9 @@ const ProductScreen = ({ match }) => {
     dispatch(listProductDetails(match.params.id));
   }, [dispatch, match]);
 
-  const addToCardHandler = () => {};
+  const addToCardHandler = () => {
+    history.push(`/cart/${match.params.id}?qty=${qty}`);
+  };
 
   return (
     <section className="text-gray-600 body-font mb-12 overflow-hidden">

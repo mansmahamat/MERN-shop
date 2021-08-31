@@ -48,9 +48,9 @@ const Header = () => {
         </div>
         <ul className="hidden lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-10">
           <li>Home pc</li>
-          <li>
+          <Link to="/cart">
             <FontAwesomeIcon icon={faShoppingCart} /> Cart
-          </li>
+          </Link>
           <li>
             {' '}
             <FontAwesomeIcon icon={faUserAlt} /> Sign In
