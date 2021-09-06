@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ProductCard from '../partials/HomeScreen/ProductCard';
 import Loader from '../components/Loader';
 import { listProducts } from '../actions/productActions';
+import { ToastContainer } from 'react-toastify';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -79,6 +80,7 @@ const HomeScreen = () => {
           ))
         )}
       </div>
+      <ToastContainer />
     </section>
   );
 };

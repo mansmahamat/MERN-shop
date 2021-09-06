@@ -1,11 +1,39 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 //import MenuItem from '../partials/Header/MenuItem';
+import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faUserAlt } from '@fortawesome/free-solid-svg-icons';
+import {
+  faShoppingCart,
+  faUserAlt,
+  faHome,
+  faChevronDown,
+  faChevronUp,
+} from '@fortawesome/free-solid-svg-icons';
+import { createPopper } from '@popperjs/core';
+import { logout } from '../actions/userActions';
+import Swipeable from 'react-swipeable';
 
 const Header = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
+  const [dropdownPopoverShow, setDropdownPopoverShow] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const btnDropdownRef = React.createRef();
+  const popoverDropdownRef = React.createRef();
+  const openDropdownPopover = () => {
+    createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
+      placement: 'bottom-start',
+    });
+    setDropdownPopoverShow(true);
+  };
+  const closeDropdownPopover = () => {
+    setDropdownPopoverShow(false);
+  };
 
   const avatar = (
     // viewer.id && viewer.avatar ? (
@@ -16,6 +44,15 @@ const Header = () => {
     />
   );
   // ) : null;
+
+  let path = `/login`;
+  let history = useHistory();
+
+  const logoutHandler = () => {
+    dispatch(logout());
+    setNavbarOpen(false);
+    history.push(path);
+  };
 
   return (
     <nav className="px-10 py-8 bg-green-600">
@@ -51,11 +88,74 @@ const Header = () => {
           <Link to="/cart">
             <FontAwesomeIcon icon={faShoppingCart} /> Cart
           </Link>
-          <li>
-            {' '}
-            <FontAwesomeIcon icon={faUserAlt} /> Sign In
-          </li>
-          <li>Link b3</li>
+
+          {userInfo ? (
+            <>
+              <li
+                ref={btnDropdownRef}
+                onClick={() => {
+                  dropdownPopoverShow
+                    ? closeDropdownPopover()
+                    : openDropdownPopover();
+                }}
+              >
+                <FontAwesomeIcon icon={faUserAlt} /> {userInfo.name}{' '}
+                {dropdownPopoverShow ? (
+                  <FontAwesomeIcon icon={faChevronUp} />
+                ) : (
+                  <FontAwesomeIcon icon={faChevronDown} />
+                )}
+              </li>
+
+              <div
+                ref={popoverDropdownRef}
+                className={
+                  (dropdownPopoverShow ? 'block ' : 'hidden ') +
+                  'text-base z-50 float-left bg-green-300 py-2 list-none text-left rounded shadow-lg mt-1'
+                }
+                style={{ minWidth: '12rem' }}
+              >
+                <Link
+                  to="/profile"
+                  className={
+                    'text-sm py-2 px-4 font-normal block w-full whitespace-nowrap  '
+                  }
+                  onClick={(e) => e.preventDefault()}
+                >
+                  Profile
+                </Link>
+                <span
+                  className={
+                    'text-sm py-2 px-4 font-normal block w-full whitespace-nowrap '
+                  }
+                  onClick={(e) => e.preventDefault()}
+                >
+                  Link #1
+                </span>
+                <span
+                  className={
+                    'text-sm py-2 px-4 font-normal block w-full whitespace-nowrap  '
+                  }
+                  onClick={(e) => e.preventDefault()}
+                >
+                  Link #2
+                </span>
+                <div className="h-0 my-2 border border-solid border-t-0 border-blueGray-800 opacity-25" />
+                <span
+                  className={
+                    'text-sm py-2 bg-red-400 px-4 font-normal block w-full whitespace-nowrap  '
+                  }
+                  onClick={logoutHandler}
+                >
+                  Logout
+                </span>
+              </div>
+            </>
+          ) : (
+            <Link to="/login">
+              <FontAwesomeIcon icon={faUserAlt} /> Sign In
+            </Link>
+          )}
         </ul>
         <div className="hidden lg:flex" data-dashlane-rid="aa60bf5d1d368b80">
           <input
@@ -93,18 +193,17 @@ const Header = () => {
           ' navbar-menu relative z-50' + (navbarOpen ? ' block' : ' hidden')
         }
       >
-        <div className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
+        <div className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-50"></div>
         <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
-          <div className="flex items-center mb-8">
-            <p className="mr-2">Plat Shop</p>
-            <img className="h-10" src="" alt="" width="auto" />
+          <div className="flex items-center space-x-32 mb-20">
+            <p className="mr-2">My Plants Shop 🌺</p>
 
             <button
               className="navbar-close"
               onClick={() => setNavbarOpen(false)}
             >
               <svg
-                className="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500"
+                className="h-6 w-6 text-black cursor-pointer hover:text-gray-500"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -119,30 +218,71 @@ const Header = () => {
               </svg>
             </button>
           </div>
-          <div>
-            {avatar}
-            <input
-              className="inline-block px-4 py-3 text-sm text-gray-50 placeholder-gray-50 font-semibold bg-green-600 border border-transparent rounded-l"
+          <div className="flex flex-col">
+            {userInfo && (
+              <span className="flex">
+                <p className="text-lg font-semibold mb-4">
+                  Hello {userInfo.name} 😎
+                </p>
+              </span>
+            )}
+            {/* <input
+              className="inline-block px-4 py-3 mb-2 text-sm text-gray-50 placeholder-gray-50 font-semibold bg-green-600 border border-transparent rounded-l"
               placeholder="Search"
               data-dashlane-rid="1d395ff59b419945"
               data-form-type="other"
-            />
-            <ul>
-              {/* {!viewer.id && !viewer.avatar ? (
-                <li className="mb-1">
+            /> */}
+            <ul className="flex flex-col">
+              <Link
+                to="/"
+                onClick={() => setNavbarOpen(false)}
+                className="mb-4"
+              >
+                <FontAwesomeIcon
+                  className="mr-2 text-green-600"
+                  icon={faHome}
+                />
+                Homepage
+              </Link>
+              {userInfo ? (
+                <>
                   <Link
-                    className="block p-4 mt-6 text-sm font-semibold bg-green-400 text-gray-900 rounded"
-                    to="/login"
+                    to="/cart"
+                    onClick={() => setNavbarOpen(false)}
+                    className="mb-4"
                   >
-                    Sign Up
-                  
-                </li>
-              ) : null} */}
-              <li className="mb-1">Home mobile</li>
-              <li className="mb-1">Profile</li>
-              <li className="mb-1">Link 2</li>
-              <li className="mb-1">Link 3</li>
-              <hr />
+                    <FontAwesomeIcon
+                      className="mr-2 text-green-600"
+                      icon={faShoppingCart}
+                    />
+                    Cart
+                  </Link>
+                  <Link
+                    to="/profile"
+                    className="mb-4"
+                    onClick={() => setNavbarOpen(false)}
+                  >
+                    <FontAwesomeIcon
+                      className="mr-2 text-green-600"
+                      icon={faUserAlt}
+                    />
+                    Profile
+                  </Link>
+
+                  <li
+                    className="bg-red-400 py-2 mt-72 px-2 text-center mb-1"
+                    onClick={logoutHandler}
+                  >
+                    Logout
+                  </li>
+                </>
+              ) : (
+                <Link onClick={() => setNavbarOpen(false)} to="/login">
+                  <FontAwesomeIcon className="mr-2" icon={faUserAlt} />
+                  Sign In
+                </Link>
+              )}
+
               {/* {viewer.id && viewer.avatar ? (
                 <li className="mb-1">
                   <Link
