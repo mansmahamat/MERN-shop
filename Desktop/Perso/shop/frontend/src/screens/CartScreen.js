@@ -13,8 +13,6 @@ function CartScreen({ match, location, history }) {
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
-  console.log(cartItems);
-
   useEffect(() => {
     if (productId) {
       dispatch(addToCart(productId, qty));
@@ -39,9 +37,9 @@ function CartScreen({ match, location, history }) {
           <h3 className="font-semibold text-2xl">Cart is empty</h3>
         </div>
       ) : (
-        <div className="flex shadow-md my-10">
-          <div className="w-3/4 bg-white px-10 py-10">
-            <div className="flex justify-between border-b pb-8">
+        <div className="flex flex-col  lg:flex-row shadow-md my-10">
+          <div className=" lg:w-3/4  bg-white px-10 py-10">
+            <div className="flex  justify-between border-b pb-8">
               <h1 className="font-semibold text-2xl">Shopping Cart</h1>
             </div>
 
@@ -60,14 +58,14 @@ function CartScreen({ match, location, history }) {
               </h3>
             </div>
 
-            {cartItems.map((item) => (
+            {cartItems.map((item, index) => (
               <div
-                key={item.id}
+                key={index}
                 className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5"
               >
-                <div className="flex w-2/5">
+                <div className="flex ">
                   <div className="w-20">
-                    <img className="h-24" src={item.image} alt={item.name} />
+                    <img className="h-24 " src={item.image} alt={item.name} />
                   </div>
                   <div className="flex flex-col justify-between ml-4 flex-grow">
                     <span className="font-bold text-sm">{item.name}</span>
@@ -132,7 +130,7 @@ function CartScreen({ match, location, history }) {
             </Link>
           </div>
 
-          <div id="summary" className="w-1/4 px-8 py-10">
+          <div id="summary" className="lg:w-1/4 px-8 py-10">
             <h1 className="font-semibold text-2xl border-b pb-8">
               Order Summary
             </h1>
@@ -143,7 +141,7 @@ function CartScreen({ match, location, history }) {
               <span className="font-semibold text-sm">
                 {cartItems
                   .reduce((acc, item) => acc + item.qty * item.price, 0)
-                  .toFixed(2)}{' '}
+                  .toFixed(2)}
                 €
               </span>
             </div>

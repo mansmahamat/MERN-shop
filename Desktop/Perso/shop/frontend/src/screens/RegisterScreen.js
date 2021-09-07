@@ -41,7 +41,7 @@ function RegisterScreen({ location, history }) {
     if (password !== confirmPassword || password.length < 6) {
       setMessage('Passwords need to match and have at least 6 characters');
     } else {
-      dispatch(register(name, email, password));
+      dispatch(register(name.toLowerCase(), email.toLowerCase(), password));
     }
   };
 

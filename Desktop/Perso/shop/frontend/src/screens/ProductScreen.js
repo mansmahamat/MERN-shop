@@ -40,10 +40,7 @@ const ProductScreen = ({ history, match }) => {
                 <h2 className="text-sm title-font text-gray-900 tracking-widest">
                   {product.category}
                 </h2>
-                <Link
-                  className="font-black bg-green-600 py-1 px-1 lg:py-2 lg:px-4 rounded-full text-white"
-                  to="/"
-                >
+                <Link className="font-black " to="/">
                   <FontAwesomeIcon className="mr-2" icon={faArrowLeft} />
                   Go back
                 </Link>
@@ -120,7 +117,7 @@ const ProductScreen = ({ history, match }) => {
                   <form>
                     <select
                       onChange={(e) => setQty(e.target.value)}
-                      className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      className="block text-right w-20 lg:w-16 ml-4 bg-gray-200 border border-gray-200 text-gray-700 py-1 px-2 lg:pr-6 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                       id="grid-state"
                       value={qty}
                     >
@@ -135,7 +132,7 @@ const ProductScreen = ({ history, match }) => {
                 {product.countInStock > 0 && (
                   <button
                     onClick={addToCardHandler}
-                    className="flex ml-auto text-white bg-green-600 border-0 py-2 px-6 focus:outline-none hover:bg-green-400 rounded"
+                    className="flex ml-auto text-white bg-green-600 border-0 py-2 px-4 focus:outline-none hover:bg-green-400 rounded"
                   >
                     Add to cart
                   </button>

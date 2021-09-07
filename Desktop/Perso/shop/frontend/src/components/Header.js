@@ -57,7 +57,7 @@ const Header = () => {
   return (
     <nav className="px-10 py-8 bg-green-600">
       <div className="flex justify-between items-center">
-        <Link to="/">
+        <Link onClick={() => setDropdownPopoverShow(false)} to="/">
           <img alt="Profile" src="/images/sprout.svg" className="h-12 w-12" />
           <p className="mr-2 text-xl">Plant Shop</p>
         </Link>
@@ -85,7 +85,7 @@ const Header = () => {
         </div>
         <ul className="hidden lg:flex lg:mx-auto lg:items-center lg:w-auto lg:space-x-10">
           <li>Home pc</li>
-          <Link to="/cart">
+          <Link onClick={() => setDropdownPopoverShow(false)} to="/cart">
             <FontAwesomeIcon icon={faShoppingCart} /> Cart
           </Link>
 
@@ -117,16 +117,14 @@ const Header = () => {
               >
                 <Link
                   to="/profile"
-                  className={
-                    'text-sm py-2 px-4 font-normal block w-full whitespace-nowrap  '
-                  }
-                  onClick={(e) => e.preventDefault()}
+                  className="text-sm py-2  hover:bg-green-600 px-4 font-normal block w-full whitespace-nowrap"
+                  onClick={() => setDropdownPopoverShow(false)}
                 >
                   Profile
                 </Link>
                 <span
                   className={
-                    'text-sm py-2 px-4 font-normal block w-full whitespace-nowrap '
+                    'text-sm py-2 hover:bg-green-600 px-4 font-normal block w-full whitespace-nowrap '
                   }
                   onClick={(e) => e.preventDefault()}
                 >
@@ -134,13 +132,13 @@ const Header = () => {
                 </span>
                 <span
                   className={
-                    'text-sm py-2 px-4 font-normal block w-full whitespace-nowrap  '
+                    'text-sm py-2 px-4 font-normal hover:bg-green-600 block w-full whitespace-nowrap  '
                   }
                   onClick={(e) => e.preventDefault()}
                 >
                   Link #2
                 </span>
-                <div className="h-0 my-2 border border-solid border-t-0 border-blueGray-800 opacity-25" />
+
                 <span
                   className={
                     'text-sm py-2 bg-red-400 px-4 font-normal block w-full whitespace-nowrap  '
