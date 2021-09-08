@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getUserDetails } from '../actions/userActions';
+import { getUserDetails, updateUserProfile } from '../actions/userActions';
 import Loader from '../components/Loader';
 
 function ProfileScreens({ location, history }) {
@@ -23,6 +23,9 @@ function ProfileScreens({ location, history }) {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
+  const { success } = userUpdateProfile;
+
   useEffect(() => {
     if (!userInfo) {
       history.push('/login');
@@ -38,10 +41,10 @@ function ProfileScreens({ location, history }) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (password !== confirmPassword || password.length < 6) {
-      setMessage('Passwords need to match and have at least 6 characters');
+    if (password !== confirmPassword) {
+      setMessage('Passwords need to match');
     } else {
-      //
+      dispatch(updateUserProfile({ id: user._id, name, email, password }));
     }
   };
 
@@ -53,6 +56,11 @@ function ProfileScreens({ location, history }) {
             <h1 className="text-3xl font-bold text-center mb-4 cursor-pointer">
               Update your profile
             </h1>
+            {success && (
+              <p className="w-80 text-center text-sm mb-8 font-semibold text-green-700 tracking-wide cursor-pointer">
+                Profile updated
+              </p>
+            )}
             {error && (
               <p className="w-80 text-center text-sm mb-8 font-semibold text-red-700 tracking-wide cursor-pointer">
                 Invalid email or password
