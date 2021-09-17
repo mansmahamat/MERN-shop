@@ -150,7 +150,7 @@ function CartScreen({ match, location, history }) {
                 Shipping
               </label>
               <select className="block p-2 text-gray-600 w-full text-sm">
-                <option>Standard shipping - $10.00</option>
+                <option>Standard shipping </option>
               </select>
             </div>
             <div className="py-10" />
@@ -160,7 +160,7 @@ function CartScreen({ match, location, history }) {
                 <span>Total cost</span>
                 <span>
                   {cartItems
-                    .reduce((acc, item) => acc + item.qty * item.price, 10)
+                    .reduce((acc, item) => acc + item.qty * item.price, 0)
                     .toFixed(2)}
                   €
                 </span>

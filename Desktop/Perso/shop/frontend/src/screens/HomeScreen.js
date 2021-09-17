@@ -5,15 +5,16 @@ import Loader from '../components/Loader';
 import { listProducts } from '../actions/productActions';
 import { ToastContainer } from 'react-toastify';
 
-const HomeScreen = () => {
+const HomeScreen = ({ match }) => {
+  const keyword = match.params.keyword;
   const dispatch = useDispatch();
 
   const productList = useSelector((state) => state.productList);
   const { products, loading, error } = productList;
 
   useEffect(() => {
-    dispatch(listProducts());
-  }, [dispatch]);
+    dispatch(listProducts(keyword));
+  }, [dispatch, keyword]);
 
   return (
     <section className="bg-white py-8">
@@ -66,7 +67,7 @@ const HomeScreen = () => {
         ) : error ? (
           <h2>Error..</h2>
         ) : (
-          products?.map((product) => (
+          products.map((product) => (
             <ProductCard
               _id={product._id}
               key={product._id}

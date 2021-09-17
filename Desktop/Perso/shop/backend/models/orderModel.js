@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const orderSchema = mongoose.Schema(
   {
@@ -28,7 +28,6 @@ const orderSchema = mongoose.Schema(
     },
     paymentMethod: {
       type: String,
-      required: true,
     },
     paymentResult: {
       id: { type: String },
@@ -36,7 +35,7 @@ const orderSchema = mongoose.Schema(
       update_time: { type: String },
       email_address: { type: String },
     },
-    taxPrices: {
+    taxPrice: {
       type: String,
       required: true,
     },
@@ -74,4 +73,4 @@ const orderSchema = mongoose.Schema(
 
 const Order = mongoose.model('Order', orderSchema);
 
-module.exports = Order;
+export default Order;

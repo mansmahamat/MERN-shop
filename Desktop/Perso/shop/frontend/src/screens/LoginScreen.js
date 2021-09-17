@@ -22,15 +22,15 @@ function LoginScreen({ location, history }) {
   useEffect(() => {
     if (userInfo) {
       history.push(redirect);
-      toast.success('Login successfully 🚀', {
-        position: 'bottom-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+      // toast.success('Login successfully 🚀', {
+      //   position: 'bottom-right',
+      //   autoClose: 5000,
+      //   hideProgressBar: false,
+      //   closeOnClick: true,
+      //   pauseOnHover: true,
+      //   draggable: true,
+      //   progress: undefined,
+      // });
     }
   }, [history, userInfo, redirect]);
 
